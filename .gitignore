@@ -1,0 +1,9 @@
+*.o
+
+# If tau is used with --keepFiles, it leaves temporary files behind,
+# which should be ignored.
+*.pomp.F90
+*.opari.inc
+pompregions.c
+test
+
