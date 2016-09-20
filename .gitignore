@@ -4,6 +4,9 @@
 # which should be ignored.
 *.pomp.F90
 *.opari.inc
+*.pomp.pdb
+*.pomp.inst.*
 pompregions.c
 test
+omp-test.o*
 
