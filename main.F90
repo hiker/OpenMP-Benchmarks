@@ -16,10 +16,7 @@ program main
 
   call sub_partial_omp(8, dummy)
 
-  call collapse1(8, dummy)
-  call collapse2(8, dummy)
-
-
+  !Can be used to check IO measurements.
   !write(name, '(I)' ) rank
   !open(unit=2, file="dummy"//name//".out")
   !write(2,*) "This is a test"
