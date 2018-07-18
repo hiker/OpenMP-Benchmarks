@@ -1,16 +1,25 @@
 F90=ftn
 
 TAU=no
+USE_MPI=no
+
+NAME_PREFIX=
 ifeq ($(TAU), yes)
     F90=tau_f90.sh -optKeepFiles
-    EXEC_NAME=test.tau
-else
-    F90=ftn
-    EXEC_NAME=test
+    NAME_PREFIX=.tau
 endif
 
-FFLAGS=-O3 -openmp -g
-FFLAGS=-O3 -fopenmp -g
+FFLAGS=-O3 -qopenmp
+#FFLAGS=-O3 -homp
+#FFLAGS=-O2 -qopenmp -g
+
+PAR_NAME=
+ifeq ($(USE_MPI), yes)
+    FFLAGS+=-DUSE_MPI
+    PAR_NAME=.MPI
+endif
+
+EXEC_NAME=omp-test$(PAR_NAME)$(NAME_PREFIX)
 
 OBJ=sub_half_omp.o sub_partial.o sub_imbalance.o sub_full_omp.o  \
     sub_no_omp.o main.o
