@@ -8,7 +8,7 @@ subroutine sub_imbalance(sec, dummy)
     real, dimension(n,n) :: a, b, c
     integer omp_get_max_threads, omp_get_thread_num
     external omp_get_max_threads, omp_get_thread_num
-
+    a=0
     b=1
     c=1
     amount = sec*11303/10
@@ -19,12 +19,12 @@ subroutine sub_imbalance(sec, dummy)
     do k=start, end
        do i=1, n
           do j=1,n
-             a(i,j) = a(i,j) + b(i,j)*c(i,j)
+             a(i,j) = a(i,j) + b(i,j)*c(i,j)+k
           enddo
        enddo
     enddo
 !$omp end parallel
 
-    dummy = a(2,2)
+    dummy = sum(a)
 end subroutine sub_imbalance
 

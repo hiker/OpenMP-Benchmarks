@@ -10,16 +10,17 @@ subroutine sub_no_omp(sec, dummy)
     integer, parameter :: n=1000
     real dummy
     real, dimension(n,n) :: a, b, c
-
+    a=0
     b=1
     c=1
     do k=1, 11303*sec
        do i=1, n
           do j=1,n
-            a(i,j) = a(i,j) + b(i,j)*c(i,j)
+            a(i,j) = a(i,j) + b(i,j)*c(j,i)+k
           enddo
        enddo
     enddo
-    dummy = a(2,2)
+
+    dummy = sum(a)
 end subroutine sub_no_omp
 

@@ -9,6 +9,7 @@ subroutine sub_half_omp(sec, dummy)
     external omp_get_max_threads, omp_get_thread_num
 
     nhalf = omp_get_max_threads() / 2
+    a=0
     b=1
     c=1
 !$omp parallel do private(o,k,i,j)
@@ -16,11 +17,12 @@ subroutine sub_half_omp(sec, dummy)
        do k=o, sec*11303, nhalf
           do i=1, n
              do j=1,n
-                a(i,j) = a(i,j) + b(i,j)*c(i,j)
+                a(i,j) = a(i,j) + b(i,j)*c(i,j)+k
              enddo
           enddo
        enddo
     enddo
-    dummy = a(2,2)
+
+    dummy = sum(a)
 end subroutine sub_half_omp
 
