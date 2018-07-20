@@ -1,0 +1,8 @@
+This result file was created by compiling with tau-intel17/hybrid:
+
+  make TAU=yes MPI=yes
+
+Then ran on 3 nodes. To visualise the results, load (any) tau module, and use:
+
+  paraprof 3nodes.ppk
+
