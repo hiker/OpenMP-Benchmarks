@@ -1,7 +1,7 @@
 F90=ftn
 
 TAU=no
-USE_MPI=no
+MPI=no
 
 NAME_PREFIX=
 ifeq ($(TAU), yes)
@@ -14,7 +14,7 @@ FFLAGS=-O3 -qopenmp
 #FFLAGS=-O2 -qopenmp -g
 
 PAR_NAME=
-ifeq ($(USE_MPI), yes)
+ifeq ($(MPI), yes)
     FFLAGS+=-DUSE_MPI
     PAR_NAME=.MPI
 endif

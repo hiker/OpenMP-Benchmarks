@@ -1,23 +1,21 @@
-subroutine sub_full_omp(sec, dummy)
-  implicit none
+subroutine sub_full_omp(iterations, dummy, N, a, b, c)
+   implicit none
 
-    integer i, j, k, sec, o
-    integer, parameter :: n=1000
-    real dummy
-
-    real, dimension(n,n) :: a, b, c
-    a=0
-    b=1
-    c=1
-!$omp parallel do private(o,k,i,j)
-       do k=1, sec*11303
-          do i=1, n
-             do j=1,n
-                a(i,j) = a(i,j) + b(i,j)*c(i,j)+k
-             enddo
-          enddo
-       enddo
+   integer i, j, k, iterations
+   integer :: N
+   real dummy
+   real, dimension(N,N) :: a, b, c
+    
+   dummy = 0
+!$omp parallel do private(k,i,j)
+   do j=1, n
+      do k=1, iterations
+         do i=1,n
+            a(i,j) = a(i,j) + b(i,j)*c(j,i)+k
+         enddo
+      enddo
+   enddo
        	
-    dummy = sum(a)
+   dummy = sum(a)
 end subroutine sub_full_omp
 
