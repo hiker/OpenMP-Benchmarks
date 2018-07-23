@@ -2,11 +2,16 @@ F90=ftn
 
 TAU=no
 MPI=no
+SCOREP=yes
 
 NAME_PREFIX=
 ifeq ($(TAU), yes)
     F90=tau_f90.sh -optKeepFiles
     NAME_PREFIX=.tau
+endif
+ifeq ($(SCOREP), yes)
+    F90=scorep ftn
+    NAME_PREFIX=.scorep
 endif
 
 FFLAGS=-O3 -qopenmp
