@@ -1,0 +1,20 @@
+A short description of the example files:
+
+tau-pdt-based
+   The file 3nodes.ppk is based on a 3 node run, and is using pdt (part of
+   tau) to modify the source to insert calls to tau. While this gives
+   most flexibility, the parser can often have problem and abort.
+   Use paraprof 3nodes.ppk to visualise the results
+
+tau-compilerinstrumentation
+   This file is based on using compiler based instrumentation: This is a lot
+   more robust than the pdt parser included in tau, but in the past has 
+   given less information. At least in this example it appears that it
+   collected all subroutines and openmp statements, the only missing thing
+   are the line numbers of subroutine, which are not important anyway.
+   Use paraprof 3nodes-comp.ppk to visualise the results.
+
+
+ Several tau packed data files can be visualised at the same time, e.g.:
+ paraprof tau-compilerinstrumentation/3nodes-comp.ppk tau-pdt-based/3nodes.ppk
+ 
