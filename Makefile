@@ -2,7 +2,7 @@ F90=ftn
 
 TAU=no
 MPI=no
-SCOREP=yes
+SCOREP=no
 
 NAME_PREFIX=
 ifeq ($(TAU), yes)
