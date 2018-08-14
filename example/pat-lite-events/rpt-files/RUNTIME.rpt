@@ -1,0 +1,90 @@
+
+#################################################################
+#                                                               #
+#            CrayPat-lite Performance Statistics                #
+#                                                               #
+#################################################################
+
+CrayPat/X:  Version 7.0.1 Revision a43a9d5  03/07/18 16:18:47
+Experiment:                  lite  lite/event_profile
+Number of PEs (MPI ranks):      3
+Numbers of PEs per Node:        1  PE on each of  3  Nodes
+Numbers of Threads per PE:      4
+Number of Cores per Socket:    12
+Execution start time:  Mon Aug 13 06:57:02 2018
+System name and speed:  nid00050  2.601 GHz (nominal)
+Intel Haswell CPU  Family:  6  Model: 63  Stepping:  2
+
+
+Avg Process Time:    154.76 secs            
+High Memory:           95.9 MBytes     32.0 MBytes per PE
+I/O Read Rate:    15.899396 MBytes/sec      
+I/O Write Rate:    0.010327 MBytes/sec      
+
+Table 1:  Profile by Function Group and Function
+
+  Time% |       Time | Imb. Time |   Imb. | Calls | Group
+        |            |           |  Time% |       |  Function=[MAX10]
+        |            |           |        |       |   PE=HIDE
+        |            |           |        |       |    Thread=HIDE
+       
+ 100.0% | 154.727527 |        -- |     -- |  92.0 | Total
+|----------------------------------------------------------------------
+|  66.7% | 103.261512 |        -- |     -- |  24.0 | USER
+||---------------------------------------------------------------------
+||  27.7% |  42.824716 | 21.406684 |  50.0% |   4.0 | sub_no_omp_
+||  17.2% |  26.668209 | 13.334479 |  50.0% |   4.0 | sub_partial_omp_
+||  11.1% |  17.104994 |  8.523653 |  49.9% |   4.0 | sub_imbalance_
+||   6.9% |  10.688802 |  5.355199 |  50.1% |   4.0 | sub_full_omp_
+||   3.7% |   5.660922 |  2.828299 |  50.0% |   4.0 | sub_half_omp_
+||=====================================================================
+|  33.2% |  51.442426 |        -- |     -- |   2.0 | MPI_SYNC
+||---------------------------------------------------------------------
+||  33.2% |  51.442301 | 51.442281 | 100.0% |   1.0 | mpi_finalize_(sync)
+|======================================================================
+
+===================  Observations and suggestions  ===================
+
+
+MPI utilization:
+
+    No suggestions were made because each node has only one rank.
+
+=========================  End Observations  =========================
+
+Table 2:  File Input Stats by Filename
+
+     Read |     Read |  Read Rate | Reads | Bytes/ | File Name=!x/^/(proc|sys)/
+     Time |   MBytes | MBytes/sec |       |   Call |  PE=HIDE
+         
+ 0.000201 | 0.003196 |  15.899396 | 120.0 |  27.93 | Total
+
+    No File Name had data that satisfied the threshold.
+
+
+Table 3:  File Output Stats by Filename
+
+    Write |    Write | Write Rate | Writes | Bytes/ | File Name[max15]
+     Time |   MBytes | MBytes/sec |        |   Call |  PE=HIDE
+         
+ 0.064827 | 0.000669 |   0.010327 |   21.0 |  33.43 | Total
+|-----------------------------------------------------------------------------
+| 0.029393 | 0.000051 |   0.001752 |    3.0 |  18.00 | /g/sc/fs5/users/joergh/omp-test/dummy3.out
+| 0.018359 | 0.000051 |   0.002805 |    3.0 |  18.00 | /g/sc/fs5/users/joergh/omp-test/dummy1.out
+| 0.017011 | 0.000051 |   0.003027 |    3.0 |  18.00 | /g/sc/fs5/users/joergh/omp-test/dummy2.out
+| 0.000064 | 0.000515 |   8.009583 |   12.0 |  45.00 | stdout
+|=============================================================================
+Program invocation:  /home/joergh/work/omp-test/omp-test.MPI
+
+For a complete report with expanded tables and notes, run:
+  pat_report /g/sc/fs5/users/joergh/omp-test/omp-test.MPI+40490-50t
+
+For help identifying callers of particular functions:
+  pat_report -O callers+src /g/sc/fs5/users/joergh/omp-test/omp-test.MPI+40490-50t
+To see the entire call tree:
+  pat_report -O calltree+src /g/sc/fs5/users/joergh/omp-test/omp-test.MPI+40490-50t
+
+For interactive, graphical performance analysis, run:
+  app2 /g/sc/fs5/users/joergh/omp-test/omp-test.MPI+40490-50t
+
+================  End of CrayPat-lite output  ==========================
