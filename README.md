@@ -9,3 +9,15 @@ It contains a set of subroutines with various OMP behaviour:
 A performance measurement tool can be evaluated against those set of subroutine to check
 if the various problems can be detected in the output (and how they can be detected.
 For example load imbalance might show of as different waiting time, or compute time, or both).
+
+The application can be compiled with or without MPI: if MPI is used, rank X will have (X-1)
+times the amount of work of rank 0. So you see a load imbalance across MPI ranks.
+
+To build the application:
+modify the makefile as appropriate to specify compiler and compiler flags (atm the
+Makefile contains settings for the Intel compiler in the Cray environment using ftn).
+The following variables can be specified:
+make USE_MPI=yes TAU=yes SCOREP=yes
+USE_MPI enables MPI in the tests. TAU and SCOREP (which are exclusive) trigger the
+use of the tau or scorep compiler wrapper instead of the configured compiler.
+
